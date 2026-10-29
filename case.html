@@ -5,20 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>项目详情</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
-body{background:#111;color:#eee;line-height:1.6;padding:2rem;max-width:1000px;margin:0 auto}
-a{color:#60a5fa;text-decoration:none}
-.back{margin-bottom:2rem;display:inline-block}
-h1{margin-bottom:1rem}
-.content{color:#ddd}
-.content p{margin:0.5rem 0}
-.repo-link{display:inline-block;margin-top:1rem;padding:0.5rem 1rem;background:#1f2937;border-radius:6px}
-.repo-link:hover{background:#374151}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(160deg,#fed7aa 0%,#ffedd5 50%,#fff7ed 100%);
+  color:#111111;
+  line-height:1.9;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+.container{
+  max-width:920px;
+  margin:0 auto;
+  padding:3rem 2rem;
+}
+
+/* ===== 返回按钮 ===== */
+.back{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin-bottom:2.2rem;
+  padding:.55rem 1.1rem;
+  background:#ffffff;
+  border:1px solid #c2410c;
+  color:#c2410c;
+  text-decoration:none;
+  border-radius:10px;
+  font-size:.9rem;
+  font-weight:500;
+  box-shadow:0 2px 8px rgba(194,65,12,.12);
+  transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease;
+}
+.back:hover{
+  transform:translateY(-2px);
+  background:#c2410c;
+  color:#ffffff;
+  box-shadow:0 6px 18px rgba(194,65,12,.25);
+}
+
+/* ===== 标题 ===== */
+h1{
+  font-size:1.9rem;
+  margin-bottom:1.6rem;
+  line-height:1.4;
+  color:#000000;
+  padding-left:1rem;
+  border-left:3px solid #c2410c;
+  font-weight:700;
+}
+
+/* ===== 正文内容 ===== */
+.content{
+  color:#111111;
+  background:#ffffff;
+  padding:1.8rem 2rem;
+  border-radius:14px;
+  border:1px solid rgba(194,65,12,.12);
+  box-shadow:0 4px 20px rgba(194,65,12,.1);
+}
+.content p{
+  margin:.75rem 0;
+  font-size:.97rem;
+  line-height:1.95;
+  color:#333333;
+}
+.content strong{
+  color:#c2410c;
+  font-weight:600;
+  margin-right:.3rem;
+}
+
+/* ===== Gitee 仓库按钮 ===== */
+.repo-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin-top:1.4rem;
+  padding:.65rem 1.3rem;
+  background:#c2410c;
+  color:#ffffff;
+  border-radius:10px;
+  font-size:.92rem;
+  font-weight:500;
+  text-decoration:none;
+  box-shadow:0 2px 8px rgba(194,65,12,.28);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.repo-link:hover{
+  transform:translateY(-3px);
+  background:#9a3412;
+  box-shadow:0 6px 18px rgba(194,65,12,.4);
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width:768px){
+  .container{padding:1.6rem 1.1rem}
+  h1{font-size:1.45rem;padding-left:.7rem}
+  .content{padding:1.3rem 1.2rem;border-radius:12px}
+  .content p{font-size:.92rem;line-height:1.85}
+  .back{padding:.5rem .95rem;font-size:.85rem}
+}
+@media (max-width:420px){
+  h1{font-size:1.25rem}
+  .content p{font-size:.88rem}
+  .repo-link{padding:.55rem 1rem;font-size:.85rem}
+}
 </style>
 </head>
 <body>
+<div class="container">
 <a class="back" href="index.html">← 返回首页</a>
 <div id="container"></div>
+</div>
 <script>
 const projects = {
   cloud:{
