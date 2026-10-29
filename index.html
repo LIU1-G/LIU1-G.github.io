@@ -3,59 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刘子强 | 个人作品集</title>
+<title>刘紫琼 · Agent 应用开发工程师</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
-body{background:#111;color:#eee;line-height:1.6;padding:2rem;max-width:1200px;margin:0 auto}
-header{margin-bottom:3rem;border-bottom:1px solid #333;padding-bottom:1rem}
-h1{font-size:2rem}
-.info{color:#aaa;margin:0.5rem 0 1.5rem}
-section{margin:3rem 0}
-h2{margin-bottom:1rem;color:#60a5fa}
-.card-wrap{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0}
-.card{min-width:260px;background:#1f2937;padding:1rem;border-radius:10px;cursor:pointer}
-.card:hover{background:#374151}
-a{color:#60a5fa;text-decoration:none}
-#design{margin-top:4rem}
+:root{
+  --bg:#06080f;
+  --bg-2:#0b0f1a;
+  --bg-3:#121a2e;
+  --cyan:#00e5ff;
+  --lime:#a3e635;
+  --violet:#8b5cf6;
+  --text:#e6edf7;
+  --muted:#7b8ba8;
+  --glass:rgba(255,255,255,0.04);
+  --border:rgba(0,229,255,0.15);
+  --shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;scroll-behavior:smooth}
+
+/* ===== Animated background grid + glow ===== */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%,rgba(139,92,246,0.15),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 20%,rgba(0,229,255,0.12),transparent),
+    radial-gradient(ellipse 50% 60% at 50% 100%,rgba(163,230,53,0.08),transparent);
+  pointer-events:none;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent 80%);
+  pointer-events:none;opacity:0.5;
+}
+
+/* ===== Layout ===== */
+.wrap{max-width:1200px;margin:0 auto;padding:0 2rem}
+section{padding:5rem 0}
+
+/* ===== Nav ===== */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(6,8,15,0.7);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+.logo{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.1rem;color:var(--cyan);letter-spacing:2px;text-transform:uppercase}
+.logo span{color:var(--lime)}
+.nav-links{display:flex;gap:1.8rem;font-family:'JetBrains Mono',monospace;font-size:0.85rem}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--cyan)}
+
+/* ===== Hero ===== */
+.hero{padding:7rem 0 5rem;text-align:center;position:relative}
+.hero::before{
+  content:"";position:absolute;left:50%;top:50%;width:500px;height:500px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(0,229,255,0.12),transparent 70%);
+  z-index:-1;filter:blur(30px);
+}
+.tag{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.75rem;
+  padding:0.35rem 0.9rem;border:1px solid var(--cyan);color:var(--cyan);
+  border-radius:999px;letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem;
+  animation:pulse-border 2.5s ease-in-out infinite;
+}
+@keyframes pulse-border{0%,100%{box-shadow:0 0 0 0 rgba(0,229,255,0.4)}50%{box-shadow:0 0 20px 2px rgba(0,229,255,0.25)}}
+.hero h1{
+  font-family:'Orbitron',sans-serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:900;
+  background:linear-gradient(135deg,#fff 0%,var(--cyan) 50%,var(--lime) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:4px;margin-bottom:1rem;
+}
+.hero .role{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:var(--muted);margin-bottom:2.5rem}
+.hero .role .caret{color:var(--cyan);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;
+  text-decoration:none;border-radius:8px;transition:transform .2s,box-shadow .2s,background .2s;
+  border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),#0099ff);color:#000}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,229,255,0.35)}
+.btn-ghost{background:transparent;color:var(--cyan);border-color:var(--border)}
+.btn-ghost:hover{background:rgba(0,229,255,0.08);border-color:var(--cyan);transform:translateY(-2px)}
+
+/* ===== Section title ===== */
+.sec-title{font-family:'Orbitron',sans-serif;font-size:1.8rem;margin-bottom:0.3rem;letter-spacing:2px}
+.sec-title::before{content:"// ";color:var(--cyan)}
+.sec-sub{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:0.85rem;margin-bottom:3rem}
+
+/* ===== Skills ===== */
+.skills-grid{display:flex;flex-wrap:wrap;gap:0.6rem}
+.skill-chip{
+  font-family:'JetBrains Mono',monospace;font-size:0.8rem;padding:0.5rem 1rem;
+  background:var(--glass);border:1px solid var(--border);border-radius:6px;
+  color:var(--text);transition:all .2s;
+}
+.skill-chip:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-2px);box-shadow:0 4px 12px rgba(163,230,53,0.15)}
+
+/* ===== Projects ===== */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.proj-card{
+  position:relative;background:linear-gradient(160deg,rgba(18,26,46,0.8),rgba(11,15,26,0.6));
+  border:1px solid var(--border);border-radius:14px;padding:1.8rem;cursor:pointer;
+  transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden;
+}
+.proj-card::before{
+  content:"";position:absolute;inset:0;border-radius:14px;padding:1px;
+  background:linear-gradient(135deg,var(--cyan),transparent 40%,transparent 60%,var(--violet));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.proj-card:hover{transform:translateY(-6px);border-color:transparent}
+.proj-card:hover::before{opacity:1}
+.proj-card:hover .arrow{transform:translateX(4px);color:var(--cyan)}
+.proj-num{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--lime);margin-bottom:0.6rem}
+.proj-card h3{font-size:1.25rem;margin-bottom:0.6rem;color:#fff}
+.proj-card p{color:var(--muted);font-size:0.9rem;margin-bottom:1rem}
+.proj-repo{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);opacity:0.7}
+.proj-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--border)}
+.arrow{color:var(--muted);font-size:1.2rem;transition:all .2s}
+
+/* ===== Doc ===== */
+.doc-card{
+  display:flex;align-items:center;gap:1.5rem;background:var(--glass);
+  border:1px solid var(--border);border-radius:14px;padding:2rem;text-decoration:none;color:inherit;
+  transition:all .3s;
+}
+.doc-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,229,255,0.1)}
+.doc-icon{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.doc-meta h3{color:#fff;margin-bottom:0.2rem}
+.doc-meta p{color:var(--muted);font-size:0.85rem;font-family:'JetBrains Mono',monospace}
+
+/* ===== Footer ===== */
+footer{text-align:center;padding:3rem 0;border-top:1px solid var(--border);margin-top:3rem;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:0.8rem}
+footer a{color:var(--cyan);text-decoration:none}
+
+/* ===== Scroll reveal ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Responsive ===== */
+@media(max-width:640px){
+  .wrap{padding:0 1.2rem}
+  nav .wrap{padding:0.8rem 1.2rem}
+  .nav-links{gap:1rem;font-size:0.75rem}
+  section{padding:3.5rem 0}
+  .hero{padding:4rem 0 3rem}
+}
 </style>
 </head>
 <body>
-<header>
-  <h1>刘子强</h1>
-  <div class="info">专科｜后端/全栈开发｜AI工程｜Linux运维</div>
-  <div>gitee: <a href="https://gitee.com/liuziqiongwjk">@liuziqiongwjk</a></div>
-</header>
 
-<section id="skill">
-  <h2>技术栈</h2>
-  <p>Linux、Python FastAPI、React、MySQL、Redis、Ollama、Dify、RAG、OpenCV、Pandas、Docker、Git</p>
-</section>
-
-<section id="project">
-  <h2>项目作品</h2>
-  <div class="card-wrap">
-    <div class="card" onclick="location.href='case.html?id=cloud'">
-      <h3>云创社综合平台</h3>
-      <p>开源全栈AI平台，AI面试、多模态助手、后台管理</p>
-    </div>
-    <div class="card" onclick="location.href='case.html?id=vla'">
-      <h3>VLA数据集可视化工具</h3>
-      <p>机器人数据集校验、双摄回放、时序数据大屏</p>
-    </div>
-    <div class="card" onclick="location.href='case.html?id=rag'">
-      <h3>内网离线RAG平台</h3>
-      <p>openEuler+Ollama+Dify私有化知识库</p>
-    </div>
-    <div class="card" onclick="location.href='case.html?id=math'">
-      <h3>数模辅助平台</h3>
-      <p>AI数学建模辅助工具</p>
+<nav>
+  <div class="wrap">
+    <div class="logo">LIU<span>.dev</span></div>
+    <div class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#doc">DOC</a>
     </div>
   </div>
-</section>
+</nav>
 
-<section id="design">
-  <h2>文档与资料</h2>
-  <p><a href="assets/pdf/report.pdf">实训报告PDF</a></p>
-</section>
+<div class="wrap">
+
+  <!-- Hero -->
+  <header class="hero reveal" id="about">
+    <div class="tag">◆ Agent Developer / AI Engineer</div>
+    <h1>刘紫琼</h1>
+    <div class="role"><span id="typed"></span><span class="caret">▌</span></div>
+    <div class="cta-group">
+      <a class="btn btn-primary" href="assets/pdf/刘紫琼__Agent应用开发工程师.pdf" target="_blank">📄 查看简历</a>
+      <a class="btn btn-ghost" href="https://gitee.com/liuziqiongwjk" target="_blank">⟶ Gitee</a>
+      <a class="btn btn-ghost" href="https://github.com/LIU1-G/LIU1-G.github.io" target="_blank">⟶ GitHub Pages</a>
+    </div>
+  </header>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="sec-title reveal">技术栈</h2>
+    <p class="sec-sub reveal">// tools of the trade</p>
+    <div class="skills-grid reveal">
+      <span class="skill-chip">Linux</span>
+      <span class="skill-chip">Python · FastAPI</span>
+      <span class="skill-chip">React</span>
+      <span class="skill-chip">MySQL · Redis</span>
+      <span class="skill-chip">Ollama</span>
+      <span class="skill-chip">Dify</span>
+      <span class="skill-chip">RAG</span>
+      <span class="skill-chip">LangChain</span>
+      <span class="skill-chip">Agent</span>
+      <span class="skill-chip">OpenCV</span>
+      <span class="skill-chip">Pandas</span>
+      <span class="skill-chip">Docker</span>
+      <span class="skill-chip">Git</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="sec-title reveal">项目作品</h2>
+    <p class="sec-sub reveal">// production work</p>
+    <div class="proj-grid">
+      <a class="proj-card reveal" href="case.html?id=cloud">
+        <div class="proj-num">01 / CLOUD</div>
+        <h3>云创社综合平台</h3>
+        <p>开源 AI-Native 全栈平台，覆盖 AI 面试、多模态助手、后台管理等模块。SSE 流式对话、会话记忆、异步任务。</p>
+        <div class="proj-foot">
+          <span class="proj-repo">gitee.com/liuziqiongwjk/cloud-innovation-club</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="proj-card reveal" href="case.html?id=vla">
+        <div class="proj-num">02 / VLA</div>
+        <h3>VLA 数据集可视化工具</h3>
+        <p>适配 LeRobot v3.0 格式，双摄逐帧回放、关节/力控时序可视化，支撑机器人学习大赛产线数据大屏。</p>
+        <div class="proj-foot">
+          <span class="proj-repo">gitee.com/liuziqiongwjk/vla_data</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="proj-card reveal" href="case.html?id=leap">
+        <div class="proj-num">03 / LEAP</div>
+        <h3>Leap AI 面试系统</h3>
+        <p>LLM Agent 驱动的智能面试助手，自动化流程、智能追问、答案评估与综合评分，提升面试效率与标准化。</p>
+        <div class="proj-foot">
+          <span class="proj-repo">gitee.com/liuziqiongwjk/leap-interview</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="proj-card reveal" href="case.html?id=math">
+        <div class="proj-num">04 / MATH</div>
+        <h3>数模辅助平台</h3>
+        <p>面向数学建模的 AI Agent 工具链，数据清洗、指标计算、模型推荐、报告生成一条龙。</p>
+        <div class="proj-foot">
+          <span class="proj-repo">gitee.com/math-agent/math-agent</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Doc -->
+  <section id="doc">
+    <h2 class="sec-title reveal">文档与资料</h2>
+    <p class="sec-sub reveal">// documents</p>
+    <a class="doc-card reveal" href="assets/pdf/刘紫琼__Agent应用开发工程师.pdf" target="_blank">
+      <div class="doc-icon">📄</div>
+      <div class="doc-meta">
+        <h3>Agent 应用开发工程师 · 简历</h3>
+        <p>刘紫琼 / PDF / 点击下载</p>
+      </div>
+    </a>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">Built with ♥ by <a href="https://gitee.com/liuziqiongwjk" target="_blank">liuziqiongwjk</a> · © 2026</div>
+</footer>
+
+<script>
+// Typewriter
+const texts = ['Agent 应用开发工程师','AI Engineer','Full-Stack Developer'];
+let ti = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed');
+function type(){
+  const cur = texts[ti];
+  el.textContent = cur.substring(0, ci);
+  if(!deleting){
+    ci++;
+    if(ci > cur.length){ deleting = true; setTimeout(type, 1600); return; }
+  } else {
+    ci--;
+    if(ci < 0){ deleting = false; ti = (ti+1)%texts.length; ci = 0; }
+  }
+  setTimeout(type, deleting ? 50 : 100);
+}
+type();
+
+// Scroll reveal
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'), (i%4)*80);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
