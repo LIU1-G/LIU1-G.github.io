@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目详情</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
+body{background:#111;color:#eee;line-height:1.6;padding:2rem;max-width:1000px;margin:0 auto}
+a{color:#60a5fa;text-decoration:none}
+.back{margin-bottom:2rem;display:inline-block}
+h1{margin-bottom:1rem}
+.content{color:#ddd}
+</style>
+</head>
+<body>
+<a class="back" href="index.html">← 返回首页</a>
+<div id="container"></div>
+<script>
+const projects = {
+  cloud:{
+    title:"云创社综合平台｜开源全栈AI项目",
+    content:`
+时间：2026.05–2026.06｜角色：独立全栈开发<br>
+技术栈：React+Vite、FastAPI、MySQL、Docker、阿里云百炼<br>
+简介：AI-Native全栈Web项目，支持SSE流式对话、会话记忆、多模态解析、后台异步任务。
+    `
+  },
+  vla:{
+    title:"机器人VLA数据集可视化校验工具",
+    content:`
+技术栈：Python FastAPI、OpenCV、Pandas(PyArrow)、ECharts、JS<br>
+简介：适配LeRobot v3.0，双摄视频逐帧回放，关节/力控时序可视化，大赛产线数据大屏。
+    `
+  },
+  rag:{
+    title:"内网离线大模型RAG部署实训",
+    content:`
+技术栈：openEuler、Docker、Ollama、Dify<br>
+简介：国产化内网离线AI底座，私有RAG知识库，文档问答，无外网可用。
+    `
+  },
+  math:{
+    title:"数模解题辅助平台",
+    content:`
+简介：面向数学建模的AI辅助工具，数据处理、指标计算、报告生成。
+    `
+  }
+}
+const params = new URLSearchParams(location.search)
+const id = params.get("id")
+const data = projects[id]
+if(!data){
+  document.getElementById("container").innerHTML = "<h1>项目不存在</h1>"
+}else{
+  document.getElementById("container").innerHTML = `<h1>${data.title}</h1><div class="content">${data.content}</div>`
+}
+</script>
+</body>
+</html>

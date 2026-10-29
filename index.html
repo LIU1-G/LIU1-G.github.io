@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘子强 | 个人作品集</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
+body{background:#111;color:#eee;line-height:1.6;padding:2rem;max-width:1200px;margin:0 auto}
+header{margin-bottom:3rem;border-bottom:1px solid #333;padding-bottom:1rem}
+h1{font-size:2rem}
+.info{color:#aaa;margin:0.5rem 0 1.5rem}
+section{margin:3rem 0}
+h2{margin-bottom:1rem;color:#60a5fa}
+.card-wrap{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0}
+.card{min-width:260px;background:#1f2937;padding:1rem;border-radius:10px;cursor:pointer}
+.card:hover{background:#374151}
+a{color:#60a5fa;text-decoration:none}
+#design{margin-top:4rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>刘子强</h1>
+  <div class="info">专科｜后端/全栈开发｜AI工程｜Linux运维</div>
+  <div>gitee: <a href="https://gitee.com/liuziqiongwjk">@liuziqiongwjk</a></div>
+</header>
+
+<section id="skill">
+  <h2>技术栈</h2>
+  <p>Linux、Python FastAPI、React、MySQL、Redis、Ollama、Dify、RAG、OpenCV、Pandas、Docker、Git</p>
+</section>
+
+<section id="project">
+  <h2>项目作品</h2>
+  <div class="card-wrap">
+    <div class="card" onclick="location.href='case.html?id=cloud'">
+      <h3>云创社综合平台</h3>
+      <p>开源全栈AI平台，AI面试、多模态助手、后台管理</p>
+    </div>
+    <div class="card" onclick="location.href='case.html?id=vla'">
+      <h3>VLA数据集可视化工具</h3>
+      <p>机器人数据集校验、双摄回放、时序数据大屏</p>
+    </div>
+    <div class="card" onclick="location.href='case.html?id=rag'">
+      <h3>内网离线RAG平台</h3>
+      <p>openEuler+Ollama+Dify私有化知识库</p>
+    </div>
+    <div class="card" onclick="location.href='case.html?id=math'">
+      <h3>数模辅助平台</h3>
+      <p>AI数学建模辅助工具</p>
+    </div>
+  </div>
+</section>
+
+<section id="design">
+  <h2>文档与资料</h2>
+  <p><a href="assets/pdf/report.pdf">实训报告PDF</a></p>
+</section>
+</body>
+</html>
